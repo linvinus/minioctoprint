@@ -3,7 +3,7 @@
 
 ```
 apt install udisks2 python3-serial
-useradd octoprint
+useradd -G dialout octoprint
 cp -a ./system/* /
 mkdir -p /home/octoprint/src/minioctoprint
 cp -a manage.py /home/octoprint/src/minioctoprint
