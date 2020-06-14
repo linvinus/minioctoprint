@@ -1,0 +1,23 @@
+[Unit]
+Description=minioctoprint
+After=syslog.target network.target
+Wants=dev-ttyACM0.device
+After=dev-ttyACM0.device
+
+[Service]
+Type=simple
+User=octoprint
+StandardOutput=journal
+StandardError=journal
+#Environment=VIRTUAL_ENV=/home/andrew/venv
+#Environment=PATH=${VIRTUAL_ENV}/bin:$PATH
+WorkingDirectory=/home/octoprint/src/minioctoprint
+#ExecStartPre=source venv/bin/activate
+ExecStart=/usr/bin/python3 -u /home/octoprint/src/minioctoprint/manage.py %I
+Restart=always
+RestartSec=1
+#EnvironmentFile=/etc/sysconfig/minioctoprint.env
+
+[Install]
+WantedBy=multi-user.target
+

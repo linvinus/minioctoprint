@@ -1,0 +1,16 @@
+[Unit]
+Description=automount disks
+After=syslog.target network.target
+
+[Service]
+Type=simple
+User=octoprint
+StandardOutput=journal
+StandardError=journal
+ExecStart=/usr/local/bin/udiskmonitor.sh
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,5 @@
+KERNEL=="ttyACM[0-9]*", SUBSYSTEM=="tty", ATTRS{idVendor}=="1eaf", ATTRS{idProduct}=="0029", SYMLINK+="ttyMarlin",    MODE="0660", GROUP="dialout"
+
+ACTION=="add",KERNEL=="ttyACM[0-9]*",SUBSYSTEMS=="usb",RUN+="/bin/systemctl restart minioctoprint@%k.service"
+ACTION=="remove",KERNEL=="ttyACM[0-9]*",SUBSYSTEMS=="usb",RUN+="/bin/systemctl stop minioctoprint@%k.service"
+
